@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Fine-FreeLancing-Website.props" />
+</Project>

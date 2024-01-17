@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Fine-FreeLancing-Website.props" />
+</Project>
