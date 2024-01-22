@@ -1,0 +1,26 @@
+﻿@using Fine_FreeLancing_Website.Models;
+
+@model Login;
+
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1 class="bg-info text-white">Login</h1>
+<div class="text-danger" asp-validation-summary="All"></div>
+
+<form asp-action="Login" method="post">
+    <input type="hidden" asp-for="returnurl" />
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" class="form-control" />
+    </div>
+    <br />
+    <button class="btn btn-outline-primary" type="submit">Log In</button>
+    <button class="btn btn-outline-danger" asp-action="Index" asp-controller="Home"> Back </button>
+</form>

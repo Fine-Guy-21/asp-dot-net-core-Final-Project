@@ -1,0 +1,58 @@
+﻿@using Fine_FreeLancing_Website.Models;
+
+@model AdminVM;
+
+
+@{
+    ViewData["Title"] = "Signup";
+}
+
+<div class="container d-flex justify-content-center align-items-center mx-auto p-2 border border-success rounded-4 shadow-lg">
+    <div class="container d-flex justify-content-center align-items-center px-auto" style="height:100vh;">
+        <div class="container justify-content-evenly col-4">
+            <h1 class="text-dark fw-bold"><u>Signup</u></h1>
+            <p class="text-dark-muted font-monospace">
+                Welcome to Fine Freelance Website
+            </p>
+        </div>
+        <div class="text-danger" asp-validation-summary="All"></div>
+
+        <form class="col-6" asp-action="Signup" asp-asp-controller="Account" method="post">
+
+            <div class="form-group form-floating input-group-sm">
+                <input asp-for="FullName" class="form-control" id="floatingInput" placeholder="Full Name" />
+                <label for="floatingInput">Full Name</label>
+            </div>
+            <br>
+            <div class="form-group form-floating input-group-sm">
+                <input asp-for="UserName" class="form-control" id="floatingInput" placeholder="Username" />
+                <label for="floatingInput">Username</label>
+            </div>
+            <br>
+            <div class="form-group form-floating input-group-sm">
+                <input class="form-control" asp-for="Email" id="floatingInput" placeholder="Email" />
+                <label for="floatingInput">Email</label>
+            </div>
+            <br>
+                <div class="form-check form-check-inline mb-3">
+
+                    <label for="Male">Male   </label>
+                    <input type="radio" name="Gender" asp-for="Gender" value="Male">
+                    <label for="female">Female   </label>
+                    <input type="radio" name="Gender" asp-for="Gender" value="Female">
+
+                </div>
+            
+            <div class="form-group form-floating input-group-sm">
+                <input type="password" asp-for="Password" class="form-control" id="floatingPassword" placeholder="Password" />
+                <label for="floatingPassword">Password</label>
+            </div>
+            <br>
+            <div class="d-grid gap-4">
+                <button class="btn btn-outline-primary" type="submit" asp-action="Signup"> Register</button>
+                <a asp-action="Login" asp-controller="Account" class="btn btn-outline-danger">Login</a>
+            </div>
+
+        </form>
+    </div>
+</div>

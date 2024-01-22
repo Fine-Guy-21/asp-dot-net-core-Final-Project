@@ -1,23 +1,33 @@
+using Microsoft.AspNetCore.Identity;
+using Fine_FreeLancing_Website.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
 
-var app = builder.Build();
+var ConnString = builder.Configuration.GetConnectionString("MySQlConn");
+builder.Services.AddDbContext<MyDbContext>(options =>
+{
+    options.UseMySql(ConnString, ServerVersion.AutoDetect(ConnString));
+});
 
-// Configure the HTTP request pipeline.
+builder.Services.AddIdentity<User, IdentityRole>().
+    AddEntityFrameworkStores<MyDbContext>().AddDefaultTokenProviders();
+
+var app = builder.Build(); 
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

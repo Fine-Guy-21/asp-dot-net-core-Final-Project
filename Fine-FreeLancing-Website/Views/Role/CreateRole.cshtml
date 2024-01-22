@@ -1,0 +1,18 @@
+﻿@model string
+
+@{
+    ViewData["Title"] = "Create Role";
+}
+
+<h1 class="bg-info text-white">Create a Role</h1> 
+
+<div asp-validation-summary="All" class="text-danger"></div>
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input name="name" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary" asp-action="CreateRole">Create Role</button>
+    <button  class="btn btn-outline-primary" asp-action="Index"> Back </button>
+
+</form>

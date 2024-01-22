@@ -10,9 +10,15 @@ namespace Fine_FreeLancing_Website.Models
         //PasswordHash
         //PhoneNumber
         public string FullName { get; set; }
+        public Genders Gender { get; set; }
         public string? UserProfilePicUrl { get; set; }
         public string? PortfolioUrl { get; set; }
-        public bool PremiumUser { get; set; }
-        public int UserRating { get; set; }
+        public bool PremiumUser { get; set; } = false;
+        public DateTime? PremiumExpirationDate { get; set; }
+    }
+    public enum Genders
+    {
+        Male,
+        Female
     }
 }

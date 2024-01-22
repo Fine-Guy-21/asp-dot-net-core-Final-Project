@@ -6,21 +6,29 @@ namespace Fine_FreeLancing_Website.Models
     {
         [Required]
         public string FullName { get; set; }
+        
         [Required]
         public string UserName { get; set; }
+        
+        [Required(ErrorMessage = "Your Gender is Essential please Select Your Gender")]
+        public Genders Gender { get; set; }
+        
         [Required]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+        
+        [Required(ErrorMessage ="Select Your Position")]
+        public MainRoles Userrole { get; set; }
+
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        [Display(Name ="Portfolio Link")]
-        public string? PortfolioUrl { get; set; }
         
     }
-}
 
-/*
- var user = _dbContext.Users.FirstOrDefault(u =>
-            u.Email == emailOrUsername || u.Username == emailOrUsername);
- */
+    public enum MainRoles
+    {
+        Freelancer,
+        Employer
+    }
+}
