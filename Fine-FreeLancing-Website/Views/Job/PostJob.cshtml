@@ -6,7 +6,75 @@
     ViewData["Title"] = "Post Job";
 }
 
-<div class="container bg-primary">
-    <p> Lorem ipsim sfhkjjjjjjjjjjjjjjj</p>
+<div class="container d-flex justify-content-center align-items-center mx-auto p-2 border border-success rounded-4 shadow-lg">
+    <div class="container d-flex justify-content-center align-items-center px-auto" style="height:100vh;">
+        @* <div class="container justify-content-evenly col-4">
+             <h1 class="text-dark fw-bold"><u>Signup</u></h1>
+            <p class="text-dark-muted font-monospace">
+                Welcome to Fine Freelance Website
+            </p> 
+            <div class="form-group form-floating input-group-sm">
+                <input asp-for="JobTitle" class="form-control" id="floatingInput" placeholder="Full Name" />
+                <label for="floatingInput">Full Name</label>
+            </div>
+            <br>
+            <div class="form-group form-floating input-group-sm">
+                <input asp-for="JobTitle" class="form-control" id="floatingInput" placeholder="Full Name" />
+                <label for="floatingInput">Full Name</label>
+            </div>
+            <br>
+            <div class="form-group form-floating input-group-sm">
+                <input asp-for="JobTitle" class="form-control" id="floatingInput" placeholder="Full Name" />
+                <label for="floatingInput">Full Name</label>
+            </div>
+            <br>
 
+        </div> *@
+        <div class="text-danger" asp-validation-summary="All"></div>
+
+        <form class="col-9" asp-action="PostJob" asp-asp-controller="Job" method="post">
+            <div class="row-4">
+                <div class="col">
+                    <input asp-for="JobTitle" type="text" class="form-control" placeholder="Enter Your Job Title">
+                </div>
+            </div>
+            <br>
+            <div class="row-4">
+                <div class="col">
+                    <textarea asp-for="JobDescription" type="text" class="form-control" placeholder="Write Something about your Business"> </textarea>
+                </div>
+            </div>
+            <br>
+
+            <div class="row-4">
+                <div class="col-12">
+                    <select asp-for="JobType" class="form-select">
+                        <option value="full_time" selected> Full-Time</option>
+                        <option value="part_time" > Part-Time</option>
+                        <option value="contract" > Contractual</option>
+                    </select>
+                    <br>
+                    <input asp-for="JobPrice" type="text" class="form-control col-6" placeholder=" Enter Your Price">
+
+                </div>
+                <div class="col-6">
+                </div>
+            </div>
+            <br>
+            <div class="row-4">
+                <div class="col">
+                    <input asp-for="Expiredate" type="datetime-local" class="form-control" placeholder="Project-Deadline">
+                </div>
+            </div>
+            <br>
+            <br>
+            
+            
+            <div class="d-grid gap-4">
+                <button class="btn btn-outline-primary" type="submit" asp-action="PostJob"> Post </button>
+@*                 <a asp-action="Login" asp-controller="Account" class="btn btn-outline-danger">Login</a> *@
+            </div>
+
+        </form>
+    </div>
 </div>
