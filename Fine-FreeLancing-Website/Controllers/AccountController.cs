@@ -30,6 +30,7 @@ namespace Fine_FreeLancing_Website.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 User user = new User
                 {
                     UserName = uservm.UserName,

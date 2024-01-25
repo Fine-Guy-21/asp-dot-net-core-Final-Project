@@ -15,5 +15,12 @@ namespace Fine_FreeLancing_Website.Models
         public bool JobStatus { get; set; } 
         List<User>? Proposals { get; set; }
     }
+
+    public enum JobType
+    {
+        contract,
+        part_time,
+        full_time
+    }
 }
 
