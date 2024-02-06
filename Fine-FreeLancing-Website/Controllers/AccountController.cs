@@ -110,8 +110,5 @@ namespace Fine_FreeLancing_Website.Controllers
         }
 
 
-       
-
-
     }
 }

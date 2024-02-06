@@ -20,3 +20,8 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.custom-height {
+    height:350px;
+    width: 900px;
+}

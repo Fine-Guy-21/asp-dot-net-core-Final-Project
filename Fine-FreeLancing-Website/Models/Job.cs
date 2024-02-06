@@ -15,7 +15,7 @@ namespace Fine_FreeLancing_Website.Models
         public double JobPrice { get; set; }
         [Required]
         public DateTime Expiredate { get; set; }
-        public bool JobStatus { get; set; } 
+        public JobStatus JobStatus { get; set; } 
         List<User>? Proposals { get; set; }
     }
 
@@ -24,6 +24,13 @@ namespace Fine_FreeLancing_Website.Models
         contract,
         part_time,
         full_time
+    }
+    public enum JobStatus
+    {
+        Hiring,
+        Closed,
+        Completed
+        
     }
 }
 

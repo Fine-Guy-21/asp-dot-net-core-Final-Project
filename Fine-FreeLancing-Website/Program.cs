@@ -7,6 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 var ConnString = builder.Configuration.GetConnectionString("MySQlConn");
+
+builder.Services.AddScoped <IJobRepository, JobRepository>();
+
 builder.Services.AddDbContext<MyDbContext>(options =>
 {
     options.UseMySql(ConnString, ServerVersion.AutoDetect(ConnString));
@@ -14,7 +17,6 @@ builder.Services.AddDbContext<MyDbContext>(options =>
 
 builder.Services.AddIdentity<User, IdentityRole>().
     AddEntityFrameworkStores<MyDbContext>().AddDefaultTokenProviders();
-
 var app = builder.Build(); 
 
 if (!app.Environment.IsDevelopment())

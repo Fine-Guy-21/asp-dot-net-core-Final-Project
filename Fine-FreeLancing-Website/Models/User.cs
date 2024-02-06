@@ -15,6 +15,7 @@ namespace Fine_FreeLancing_Website.Models
         public string? PortfolioUrl { get; set; }
         public bool PremiumUser { get; set; } = false;
         public DateTime? PremiumExpirationDate { get; set; }
+         
     }
     public enum Genders
     {

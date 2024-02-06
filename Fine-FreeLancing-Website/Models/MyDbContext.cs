@@ -7,7 +7,10 @@ namespace Fine_FreeLancing_Website.Models
     {
         public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) { }
         
-        DbSet<Job> Jobs { get; set; }
-        //DbSet<Proposal> Proposals { get; set; }
+        public DbSet<Job> Jobs { get; set; }
+        public DbSet<Proposal> Proposals { get; set; }
+        public DbSet<MyJob> MyJobs { get; set; }
+        public DbSet<PostedJob> PostedJobs { get; set; }
+
     }
 }

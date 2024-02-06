@@ -9,9 +9,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Fine_FreeLancing_Website.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="~/css/bootstrap.hf.css">
+    <link rel="stylesheet" href="~/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/css/Footer-Clean.css">
+    <link rel="stylesheet" href="~/css/styles.css">
+    
     <style>
         body{
-            background-image: url("https://images.unsplash.com/photo-1617957743097-0d20aa2ea762?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+            /* https: //images.unsplash.com/photo-1617957743097-0d20aa2ea762?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D */
+            background-image: url("https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/60107fa5208b453f66790347_6002086f72b727fb1501e17c_freelance-websites.jpeg");
             background-size:cover;
         }
     </style>
@@ -20,7 +27,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container-xl">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Fine_FreeLancing_Website</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Fine-FreeLancer</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -33,11 +40,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        @* <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> *@
+                       
                         </li>
                     </ul>
                 </div>
@@ -61,22 +64,61 @@
             </div>
         </nav>
     </header>
+    
     <div class="container ">
+
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+
+
+
+     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - Fine_FreeLancing_Website - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="row justify-content-center">
+                <!-- Start: Services -->
+                <div class="col-sm-4 col-md-3 item">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Web design</a></li>
+                        <li><a href="#">Development</a></li>
+                        <li><a href="#">Hosting</a></li>
+                    </ul>
+                </div>
+                <!-- End: Services -->
+                <!-- Start: About -->
+                <div class="col-sm-4 col-md-3 item">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="#">Company</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Legacy</a></li>
+                    </ul>
+                </div>
+                <!-- End: About -->
+                <!-- Start: Careers -->
+                <div class="col-sm-4 col-md-3 item">
+                    <h3>Careers</h3>
+                    <ul>
+                        <li><a href="#">Job openings</a></li>
+                        <li><a href="#">Employee success</a></li>
+                        <li><a href="#">Benefits</a></li>
+                    </ul>
+                </div>
+                <!-- End: Careers -->
+
         </div>
-    </footer>
+            <br />    <br />
+    </footer> 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    @* <script src="https://unpkg.com/@popperjs/core@2.11.5/dist/umd/popper.min.js"></script> *@
     <script src="https://unpkg.com/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/jquery.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>
+

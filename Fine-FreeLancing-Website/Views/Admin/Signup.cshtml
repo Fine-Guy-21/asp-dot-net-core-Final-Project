@@ -9,13 +9,8 @@
 
 <div class="container d-flex justify-content-center align-items-center mx-auto p-2 border border-success rounded-4 shadow-lg">
     <div class="container d-flex justify-content-center align-items-center px-auto" style="height:100vh;">
-        <div class="container justify-content-evenly col-4">
-            <h1 class="text-dark fw-bold"><u>Signup</u></h1>
-            <p class="text-dark-muted font-monospace">
-                Welcome to Fine Freelance Website
-            </p>
-        </div>
-        <div class="text-danger" asp-validation-summary="All"></div>
+        
+        
 
         <form class="col-6" asp-action="Signup" asp-asp-controller="Account" method="post">
 
@@ -54,5 +49,12 @@
             </div>
 
         </form>
+        <div class="text-danger" asp-validation-summary="All"></div>
+        <div class="container justify-content-evenly col-4">
+            <h1 class="text-dark fw-bold"><u>Signup</u></h1>
+            <p class="text-dark-muted font-monospace">
+                Welcome to Fine Freelance Website
+            </p>
+        </div>
     </div>
 </div>

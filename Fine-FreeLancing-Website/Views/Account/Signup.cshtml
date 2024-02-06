@@ -5,20 +5,16 @@
 
 @{
     ViewData["Title"] = "Signup";
+    
 }
 
-<div class="container d-flex justify-content-center align-items-center mx-auto p-2 border border-success rounded-4 shadow-lg">
-    <div class="container d-flex justify-content-center align-items-center px-auto" style="height:100vh;">
-        <div class="container justify-content-evenly col-4">
-            <h1 class="text-dark fw-bold"><u>Signup</u></h1>
-            <p class="text-dark-muted font-monospace"> 
-                Join our freelancing community and unlock endless opportunities. 
-                Sign up today to showcase your skills, connect with clients, and start earning on your own terms!
-            </p> 
-        </div>
-        <div class="text-danger" asp-validation-summary="All"></div>
+<div class="container d-flex justify-content-center align-items-center mx-auto p-2 border border-success rounded-4 shadow-lg overflow-hidden"
+     style="background-image:url(https://images.unsplash.com/photo-1617957743097-0d20aa2ea762?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);background-size:cover;">
 
-    <form class="col-6" asp-action="Login" method="post">
+     @* style="background-image:url(https://cdn6.f-cdn.com/contestentries/1562160/33331481/5d4ed0c6cacac_thumb900.jpg);background-size:cover;" *@
+    <div class="container d-flex justify-content-center align-items-center px-auto" style="height:100vh;">
+        
+    <form class="col-6 px-4" asp-action="Login" method="post" >
 
         <div class="form-group form-floating input-group-sm">
             <input asp-for="FullName" class="form-control" id="floatingInput" placeholder="Full Name" />
@@ -66,5 +62,15 @@
         </div>
     
     </form>
+
+        <div class="container justify-content-evenly col-4 image-holder" style="background-image:url(~/Imgs/office.png);background-size:cover;">
+            <h1 class="text-dark fw-bold"><u>Signup</u></h1>
+            <p class="text-muted font-monospace">
+                <span class="text-dark-muted fw-bold">Join our freelancing community and unlock endless opportunities.</span>
+                Sign up today to showcase your skills, connect with clients, and start earning on your own terms!
+            </p>
+        </div>
+        <div class="text-danger" asp-validation-summary="All"></div>
+
     </div>
 </div>
