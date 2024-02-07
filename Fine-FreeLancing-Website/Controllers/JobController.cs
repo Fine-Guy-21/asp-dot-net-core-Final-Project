@@ -1,5 +1,6 @@
 ﻿using Fine_FreeLancing_Website.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Reflection.Metadata.Ecma335;
@@ -10,9 +11,11 @@ namespace Fine_FreeLancing_Website.Controllers
     public class JobController : Controller
     {
         private readonly IJobRepository jobRepository;
-        public JobController(IJobRepository _jobRepository)
+        private readonly UserManager<User> userManager;
+        public JobController(IJobRepository _jobRepository,UserManager<User> _userManager )
         {
             jobRepository = _jobRepository;
+            userManager = _userManager;
         }
 
         [AllowAnonymous]
@@ -30,7 +33,7 @@ namespace Fine_FreeLancing_Website.Controllers
             jobvm.JobId = Guid.NewGuid().ToString(); 
             if(ModelState.IsValid)
             {
-                //JobStatus jobStatus = JobStatus.Hiring;
+                var curruser = userManager.FindByNameAsync(User.Identity.Name).Result;                
                 Job newjob = new Job
                 {
                     JobId = jobvm.JobId,
@@ -41,7 +44,7 @@ namespace Fine_FreeLancing_Website.Controllers
                     JobPostedtime = DateTime.Now,
                     Expiredate = jobvm.Expiredate,
                     JobStatus = JobStatus.Hiring,
-                    UserId = User.Identity.Name
+                    UserId = curruser.Id
                 };
                 jobRepository.SaveJob(newjob);
 
