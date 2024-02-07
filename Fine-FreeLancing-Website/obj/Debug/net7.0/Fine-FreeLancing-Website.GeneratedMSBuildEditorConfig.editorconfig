@@ -20,6 +20,10 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/21fin/Desktop/Workspace/GH/asp-dot-net-core-Final-Project/Fine-FreeLancing-Website/Views/Account/Loginurl.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbnVybC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/21fin/Desktop/Workspace/GH/asp-dot-net-core-Final-Project/Fine-FreeLancing-Website/Views/Account/Signup.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTaWdudXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -40,8 +44,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/21fin/Desktop/Workspace/GH/asp-dot-net-core-Final-Project/Fine-FreeLancing-Website/Views/Job/EditJob.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iXEVkaXRKb2IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/21fin/Desktop/Workspace/GH/asp-dot-net-core-Final-Project/Fine-FreeLancing-Website/Views/Job/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/21fin/Desktop/Workspace/GH/asp-dot-net-core-Final-Project/Fine-FreeLancing-Website/Views/Job/JobDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iXEpvYkRldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/21fin/Desktop/Workspace/GH/asp-dot-net-core-Final-Project/Fine-FreeLancing-Website/Views/Job/PostedJobs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iXFBvc3RlZEpvYnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/21fin/Desktop/Workspace/GH/asp-dot-net-core-Final-Project/Fine-FreeLancing-Website/Views/Job/PostJob.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iXFBvc3RKb2IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/21fin/Desktop/Workspace/GH/asp-dot-net-core-Final-Project/Fine-FreeLancing-Website/Views/Proposal/CreateProposal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcG9zYWxcQ3JlYXRlUHJvcG9zYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/21fin/Desktop/Workspace/GH/asp-dot-net-core-Final-Project/Fine-FreeLancing-Website/Views/Role/CreateRole.cshtml]
@@ -71,3 +95,7 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/21fin/Desktop/Workspace/GH/asp-dot-net-core-Final-Project/Fine-FreeLancing-Website/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-073avg35n5
+
+[C:/Users/21fin/Desktop/Workspace/GH/asp-dot-net-core-Final-Project/Fine-FreeLancing-Website/Views/Shared/_Layout4.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-8oga9zyn1x

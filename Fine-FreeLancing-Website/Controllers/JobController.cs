@@ -1,7 +1,9 @@
 ﻿using Fine_FreeLancing_Website.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.InteropServices;
 
 namespace Fine_FreeLancing_Website.Controllers
 {
@@ -13,11 +15,15 @@ namespace Fine_FreeLancing_Website.Controllers
             jobRepository = _jobRepository;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()=> View(jobRepository.GetallJobs());
-        
+
+        [Authorize]
+        [Authorize(Roles = "Employer,Premium_User")]  
         [HttpGet]
         public IActionResult PostJob()=> View();
-
+        [Authorize]
+        [Authorize(Roles= "Employer,Premium_User")]        
         [HttpPost]
         public IActionResult PostJob(JobVM jobvm)
         { 
@@ -32,8 +38,10 @@ namespace Fine_FreeLancing_Website.Controllers
                     JobDescription = jobvm.JobDescription,
                     JobType = jobvm.JobType,
                     JobPrice = jobvm.JobPrice,
+                    JobPostedtime = DateTime.Now,
                     Expiredate = jobvm.Expiredate,
-                    JobStatus = JobStatus.Hiring
+                    JobStatus = JobStatus.Hiring,
+                    UserId = User.Identity.Name
                 };
                 jobRepository.SaveJob(newjob);
 
@@ -42,6 +50,7 @@ namespace Fine_FreeLancing_Website.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Employer,Premium_User,Admin")]
         [HttpGet]
         public IActionResult EditJob(String Id)
         {
@@ -62,6 +71,8 @@ namespace Fine_FreeLancing_Website.Controllers
             return View(jobvm);
         }
 
+
+        [Authorize(Roles = "Employer,Premium_User,Admin")]
         [HttpPost] 
         public IActionResult EditJob(JobVM jobvm)
         {
@@ -75,11 +86,14 @@ namespace Fine_FreeLancing_Website.Controllers
                 job.JobPrice = jobvm.JobPrice;
                 job.Expiredate = jobvm.Expiredate;
                 job.JobStatus = jobvm.JobStatus;
+
+                jobRepository.UpdateJob(job);
             }
-            return View();
+            return RedirectToAction("PostedJobs","Job");
         }
 
-        [HttpDelete]
+        [Authorize(Roles = "Employer,Premium_User,Admin")]
+        [HttpGet]
         public IActionResult DeleteJob(String Id)
         {
             Job job = jobRepository.GetJobById(Id);
@@ -90,14 +104,30 @@ namespace Fine_FreeLancing_Website.Controllers
             return RedirectToAction("Index","Job");
         }
 
+        [AllowAnonymous]
+        public IActionResult JobDetail(String Id)
+        {
+            Job job = jobRepository.GetJobById(Id);
+            if (job != null)
+            {
+                return View(job);
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
+        [Authorize(Roles = "Freelancer,Premium_User,Admin")]
         public IActionResult MyJobs()
         {
+            
             return View();
         }
+        [Authorize(Roles = "Employer,Premium_User,Admin")]
         public IActionResult PostedJobs()
         {
-            return View();
+
+            return View(jobRepository.GetallJobs());
         }
+
         public string GetRandomID()
         {
             string id = Guid.NewGuid().ToString("N");

@@ -1,0 +1,85 @@
+﻿@using Fine_FreeLancing_Website.Models;
+
+@model Login;
+
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "_Layout4";
+}
+
+@* <h1 class="bg-info text-white">Login</h1>
+<div class="text-danger" asp-validation-summary="All"></div>
+
+<form asp-action="Login" method="post">
+    <input type="hidden" asp-for="returnurl" />
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" class="form-control" />
+    </div>
+    <br />
+    <button class="btn btn-outline-primary" type="submit">Log In</button>
+    <button class="btn btn-outline-danger" asp-action="Index" asp-controller="Home"> Back </button>
+</form> *@
+
+
+<div class="container border border-success rounded-4 my-5 shadow-lg pb-5 col-lg-6 col-md-8 col-sm-10"
+style="background-image:url(https://images.unsplash.com/photo-1617957743097-0d20aa2ea762?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);background-size:cover;">  
+    <div class="row justify-content-center align-item-center">
+        <div class="col-lg-7 col-md-9 col-sm-12 ">
+            <form asp-action="Login" asp-controller="Account" method="post">
+                <br>
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                            {
+                                <li>@error.ErrorMessage</li>
+                            }
+                        </ul>
+                    </div>
+                }
+                <br>
+                <div class="form-group form-floating input-group-sm">
+                    <input class="form-control" asp-for="Email" id="floatingInput" placeholder="Email" />
+                    <input hidden class="form-control" asp-for="Returnurl" id="floatingInput" value="none"/>
+
+                    <label for="floatingInput">Email</label>
+                </div>
+                <br>
+                <div class="form-group form-floating input-group-sm">
+                    <input type="password" asp-for="Password" class="form-control" id="floatingPassword" placeholder="Password" />
+                    <label for="floatingPassword">Password</label>
+                </div>
+                <br>
+
+                <div class="form-group">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="remember">
+                                <label class="form-check-label" for="remember">Remember me</label>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="" class="text-secondary">Forgot Password?</a>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <div class="d-grid gap-4">
+                    <button class="btn btn-outline-primary" type="submit" asp-action="Login"> Sign In</button>
+                    <a asp-action="Index" asp-controller="Home" class="btn btn-outline-danger">Cancel</a>
+                </div>
+                
+
+            </form>
+        </div>
+    </div>
+</div>

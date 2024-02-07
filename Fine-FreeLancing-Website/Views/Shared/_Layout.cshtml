@@ -27,7 +27,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container-xl">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Fine-FreeLancer</a>
+                <a class="navbar-brand fw-bold" asp-area="" asp-controller="Home" asp-action="Index">Fine-FreeLancer</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -38,26 +38,32 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Job" asp-action="Index">Find Jobs</a>
                         </li>
-                       
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Job" asp-action="PostJob">Post Job</a>
                         </li>
+                        <li class="nav-item ">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Job" asp-action="Index">My Jobs</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Job" asp-action="PostedJobs">My PostedJobs</a>
+                        </li>                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Job" asp-action="Index">My Proposals</a>
+                        </li>
+                        
                     </ul>
                 </div>
                 <div class="d-sm-inline-flex end ">
                 @if (signInManager.IsSignedIn(User))
-                {
-                    
-                            <label>@User.Identity.Name</label>
-                            <button asp-controller="Account" asp-action="Logout" class="btn btn-primary m-sm-1">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout
-                                </a> </button>
-                    
+                {                    
+                        <button class="btn btn-outline-danger m-sm-1 rounded-pill"><a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout" asp-route-id="">@User.Identity.Name </a></button>                                                
                 }
                 else
                 {
-                    <button class="btn btn-outline-success m-sm-1"><a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login" asp-route-id="">Log in </a></button>
-                        <button class="btn btn-success m-sm-1"> <a class="nav-link text-white" asp-controller="Account" asp-action="Signup"> Register </a></button>
+                    <button class="btn btn-outline-success m-sm-1"><a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Loginurl" asp-route-id="">Log in </a></button>
+                    <button class="btn btn-success m-sm-1"> <a class="nav-link text-white" asp-controller="Account" asp-action="Signup"> Register </a></button>
                 }
                 </div>
 
@@ -79,39 +85,41 @@
         <div class="container">
             <div class="row justify-content-center">
                 <!-- Start: Services -->
-                <div class="col-sm-4 col-md-3 item">
-                    <h3>Services</h3>
+                <div class="col-sm-4 col-md-3 item text-dark">
+                    <h3 class ="fw-bold"> Services</h3>
                     <ul>
-                        <li><a href="#">Web design</a></li>
-                        <li><a href="#">Development</a></li>
-                        <li><a href="#">Hosting</a></li>
+                        <li><a href="#" class="text-dark">Web design</a></li>
+                        <li><a href="#" class="text-dark">Development</a></li>
+                        <li><a href="#" class="text-dark">Hosting</a></li>
                     </ul>
                 </div>
                 <!-- End: Services -->
                 <!-- Start: About -->
-                <div class="col-sm-4 col-md-3 item">
-                    <h3>About</h3>
+                <div class="col-sm-4 col-md-3 item text-dark">
+                    <h3 class="fw-bold">About</h3>
                     <ul>
-                        <li><a href="#">Company</a></li>
-                        <li><a href="#">Team</a></li>
-                        <li><a href="#">Legacy</a></li>
+                        <li><a href="#" class="text-dark">Company</a></li>
+                        <li><a href="#" class="text-dark">Team</a></li>
+                        <li><a href="#" class="text-dark">Legacy</a></li>
                     </ul>
                 </div>
                 <!-- End: About -->
                 <!-- Start: Careers -->
-                <div class="col-sm-4 col-md-3 item">
-                    <h3>Careers</h3>
-                    <ul>
-                        <li><a href="#">Job openings</a></li>
-                        <li><a href="#">Employee success</a></li>
-                        <li><a href="#">Benefits</a></li>
+                <div class="col-sm-4 col-md-3 item text-dark">
+                    <h3 class="fw-bold"> Careers</h3>
+                    <ul class="">
+                        <li><a href="#" class="text-dark">Job openings</a></li>
+                        <li><a href="#" class="text-dark">Employee success</a></li>
+                        <li><a href="#" class="text-dark">Benefits</a></li>
                     </ul>
                 </div>
                 <!-- End: Careers -->
 
+            </div>
         </div>
             <br />    <br />
     </footer> 
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>

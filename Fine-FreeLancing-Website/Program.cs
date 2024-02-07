@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Fine_FreeLancing_Website.Models;
 using Microsoft.EntityFrameworkCore;
+using Fine_FreeLancing_Website.MyMiddleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,12 +26,15 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseStaticFiles();
+app.UseMiddleware<Inform>();
 
+app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+
 
 app.MapControllerRoute(
     name: "default",

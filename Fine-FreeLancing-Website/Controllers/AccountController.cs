@@ -23,8 +23,6 @@ namespace Fine_FreeLancing_Website.Controllers
         [HttpGet]
         public IActionResult Signup() => View();
 
-
-
         [HttpPost]
         public async Task<IActionResult> Signup(UserVM uservm)
         {
@@ -57,16 +55,20 @@ namespace Fine_FreeLancing_Website.Controllers
             return View(uservm);
         }
 
+        [AllowAnonymous]
         [HttpGet]
-        public IActionResult Login()
+        public IActionResult Login(string returnurl)
         {
             Login li = new Login();
-            li.returnurl = "none";
+            li.Returnurl = returnurl;
             return View(li);
         }
+
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Login(Login li)
         {
+            
             if (ModelState.IsValid)
             {
                 User? user = await userManager.FindByEmailAsync(li.Email);
@@ -78,6 +80,10 @@ namespace Fine_FreeLancing_Website.Controllers
 
                     if (result.Succeeded)
                     {
+                        if (li.Returnurl != null)
+                        {
+                            return Redirect(li.Returnurl ?? "/"); 
+                        }
                         return RedirectToAction("Index", "Home");
                     }
                 }
@@ -91,16 +97,44 @@ namespace Fine_FreeLancing_Website.Controllers
         }
 
         [HttpGet]
-        public IActionResult Loginurl(string path)
+        public IActionResult Loginurl()
         {
             Login li = new Login();
-            li.returnurl = path;
+            li.Returnurl = "none";
             return View();
         }
         [HttpPost]
         public async Task<IActionResult> Loginurl(Login li)
         {
-            return View(li);
+            if (ModelState.IsValid)
+            {
+                User? user = await userManager.FindByEmailAsync(li.Email);
+                if (user != null)
+                {
+                    await signInManager.SignOutAsync();
+                    Microsoft.AspNetCore.Identity.SignInResult result = await signInManager
+                        .PasswordSignInAsync(user, li.Password, false, false);
+
+                    if (result.Succeeded)
+                    {
+                       
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(nameof(li.Email), "Login Failed: Invalid Email or Password Combination");
+                        RedirectToAction("Loginurl");
+                    }
+
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Login Failed: User not found"); 
+                    RedirectToAction("Loginurl");
+                }
+                
+            }
+                return View(li);
         }
 
         public async Task<IActionResult> Logout(string returnUrl)

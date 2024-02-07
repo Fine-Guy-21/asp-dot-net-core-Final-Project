@@ -1,0 +1,86 @@
+﻿@using Fine_FreeLancing_Website.Models
+
+@model JobVM
+
+@{
+    ViewData["Title"] = "Edit Job";
+    Layout = "_Layout";
+}
+
+
+<div class="container d-flex justify-content-center align-items-center mx-auto p-2 border border-success rounded-4 shadow-lg overflow-hidden">
+
+    <div class="container d-flex flex-column justify-content-center align-items-st px-auto" style="height:auto;width:80vw;">
+
+        @* Job Id , Title , Desc , Type , Price , Expired Date , Job Status *@
+
+
+        <div class="card col-sm-10 p-2">
+            <div class="card-header  col-sm fw-lighter border border-3">
+                <span class="fw-bold"> Update Job</span>
+            </div>
+                   
+            <div class="card-body ">
+                <form asp-action="EditJob" asp-controller="Job" method="post">
+
+                    <div class="form-group">
+                        <label for="JobId">Job Id</label>
+                        <input type="Text" class="form-control" id="JobId" asp-for="JobId" value="@Model.JobId" readonly="readonly">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="JobTitle">Job Title</label>
+                        <input type="Text" class="form-control" id="JobTitle" asp-for="JobTitle" value="@Model.JobTitle">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="JobDesc">Job Description</label>
+                        <textarea class="form-control" id="JobDesc" asp-for="JobDescription" rows="5">@Model.JobDescription</textarea>
+                    </div>
+
+                    
+                    <div class="form-group">
+                        <label for="JobPrice">Job Price</label>
+                        <input type="Number" class="form-control" id="JobPrice" asp-for="JobPrice" value="@Model.JobPrice">
+                    </div>
+
+                    
+                    <div class="form-group">
+                        <label for="JobType">Job Type</label>
+                        <select class="form-control" asp-for="JobType" id="JobType">
+                            <option value="full_time" selected> Full-Time</option>
+                            <option value="part_time"> Part-Time</option>
+                            <option value="contract"> Contractual</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="JobStatus">Job Status</label>
+                        <select class="form-control" asp-for="JobStatus" id="JobType">
+                            <option value="Hiring" selected> Hiring</option>
+                            <option value="Closed"> Closed</option>
+                            <option value="Completed"> Completed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ExDate">Project Deadline</label>
+                        <input type="date" id="ExDate" asp-for="Expiredate" value="@Model.Expiredate.ToString("yyyy-MM-dd")">
+                    </div>
+                    
+                    <div class="d-grid gap-4">
+                        <button class="btn btn-outline-success" type="submit" asp-action="EditJob"> Update Job </button>
+                        <a asp-action="PostedJobs" asp-controller="Job" class="btn btn-outline-danger">Back</a>
+                    </div>
+
+
+                </form>
+
+
+                
+
+        </div>
+    </div>
+</div>
+</div>

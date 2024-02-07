@@ -30,6 +30,9 @@ namespace FineFreeLancingWebsite.Migrations
                     b.Property<string>("JobDescription")
                         .HasColumnType("longtext");
 
+                    b.Property<DateTime>("JobPostedtime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<double>("JobPrice")
                         .HasColumnType("double");
 
@@ -42,6 +45,9 @@ namespace FineFreeLancingWebsite.Migrations
 
                     b.Property<string>("JobType")
                         .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("UserId")
                         .HasColumnType("longtext");
 
                     b.HasKey("JobId");

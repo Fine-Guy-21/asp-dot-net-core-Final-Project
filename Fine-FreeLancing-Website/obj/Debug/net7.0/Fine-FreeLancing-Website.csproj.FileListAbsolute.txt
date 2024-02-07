@@ -76,3 +76,4 @@ C:\Users\21fin\Desktop\Workspace\GH\asp-dot-net-core-Final-Project\Fine-FreeLanc
 C:\Users\21fin\Desktop\Workspace\GH\asp-dot-net-core-Final-Project\Fine-FreeLancing-Website\obj\Debug\net7.0\Fine-FreeLancing-Website.pdb
 C:\Users\21fin\Desktop\Workspace\GH\asp-dot-net-core-Final-Project\Fine-FreeLancing-Website\obj\Debug\net7.0\Fine-FreeLancing-Website.genruntimeconfig.cache
 C:\Users\21fin\Desktop\Workspace\GH\asp-dot-net-core-Final-Project\Fine-FreeLancing-Website\obj\Debug\net7.0\ref\Fine-FreeLancing-Website.dll
+C:\Users\21fin\Desktop\Workspace\GH\asp-dot-net-core-Final-Project\Fine-FreeLancing-Website\obj\Debug\net7.0\scopedcss\Views\Shared\_Layout4.cshtml.rz.scp.css

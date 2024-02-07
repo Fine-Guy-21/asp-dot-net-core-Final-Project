@@ -1,0 +1,71 @@
+﻿@using Fine_FreeLancing_Website.Models
+
+@model List<Job>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Find Jobs";
+}
+
+<div class="container d-flex justify-content-center align-items-center mx-auto p-2 border border-success rounded-4 shadow-lg overflow-hidden">
+
+    <div class="container d-flex flex-column justify-content-center align-items-st px-auto" style="height:auto;width:80vw;">
+        @foreach (var job in @Model)
+        {
+
+            <div class="card col-sm-10 p-2">
+                <div class="card-header  col-sm fw-bold border border-3">
+                    @job.JobTitle
+                </div>
+                <div class="card-body">
+                    <div class="form-group overflow-hidden">
+                        <label for="JobDesc">Description</label>
+                        <textarea class="form-control" id="JobDesc" rows="3" readonly>@job.JobDescription </textarea>
+                    </div>
+                    <p class="card-text-muted">   Price  : <span class="text-primary">@job.JobPrice br </span> </p>
+
+                    @{
+                        DateTime currentDate = DateTime.Now;
+                        DateTime expireDate = job.Expiredate;
+                        TimeSpan timeLeft = expireDate - currentDate;
+                        int daysLeft = (int)timeLeft.TotalDays;
+                        int monthsLeft = 0;
+
+                        string formattedDate = expireDate.ToString("dd/MM/yyyy");
+                        @while (daysLeft > 30)
+                        {
+                            daysLeft = daysLeft - 30;
+                            monthsLeft += 1;
+                        }
+                        string d = "d";
+                        string m = "m";
+                        if (daysLeft <= 30)
+                        {
+                            <div>
+                                <p class="card-text-muted">Deadline :<span class="text-primary"> @daysLeft@d  left </span></p>
+                            </div>
+                        }
+                        else
+                        {
+                            <div>
+                                <p class="card-text-muted">Deadline :<span class="text-primary"> @monthsLeft@m @daysLeft@d left</span></p>
+                            </div>
+                        }
+
+                    }
+
+                    <div class="row">
+                        <p class="card-text-muted col-sm-3">Type : <span class="text-primary">@job.JobType </span> </p>
+                        <p class="card-text-muted col-sm">Status :<span class="text-primary"> @job.JobStatus </span></p>
+                    </div>
+                    <div class="card-footer col-sm-4 rounded-pill d-flex justify-content-around">
+                        <a class="btn btn-outline-success border rounded-pill" asp-area="" asp-action="JobDetail" asp-controller="Job" asp-route-id="@job.JobId"> Detail</a>
+                        <a class="btn btn-outline-warning border rounded-pill" asp-area="" asp-action="EditJob" asp-controller="Job" asp-route-id="@job.JobId"> Edit</a>
+                        <a class="btn btn-outline-danger border rounded-pill" asp-area="" asp-action="DeleteJob" asp-controller="Job" asp-route-id="@job.JobId"> Delete</a>
+                    </div>
+                </div>
+            </div>
+            <br>
+        }
+    </div>
+</div>

@@ -1,62 +1,77 @@
-﻿@using Fine_FreeLancing_Website.Models;
-@model Fine_FreeLancing_Website.Models.JobVM;
+﻿@using Fine_FreeLancing_Website.Models
+
+@model JobVM
 
 @{
-    Layout = "_Layout";
     ViewData["Title"] = "Post Job";
+    Layout = "_Layout";
 }
 
-<div class="container d-flex justify-content-center align-items-center mx-auto p-2 border border-success rounded-4 shadow-lg">
-    <div class="container d-flex justify-content-center align-items-center px-auto" style="height:100vh;">
+
+<div class="container d-flex justify-content-center align-items-center mx-auto p-2 border border-success rounded-4 shadow-lg overflow-hidden">
+
+    <div class="container d-flex flex-column justify-content-center align-items-st px-auto" style="height:auto;width:80vw;">
+
+        @* Job Id , Title , Desc , Type , Price , Expired Date , Job Status *@
+
         
-        <div class="text-danger" asp-validation-summary="All"></div>
-
-        <form class="col-9" asp-action="PostJob" asp-asp-controller="Job" method="post">
-            <div class="row-4 ">
-                <div class="col-6">
-                    <input asp-for="JobTitle" type="text" class="form-control" placeholder="Enter Your Job Title">
-                </div>
-            </div>
-            
-            <br>
-            <div class="row-4">
-                <div class="col-6">
-                    <textarea asp-for="JobDescription" type="text" class="form-control" placeholder="Write Something about your Business"> </textarea>
-                </div>
-            </div>
-            <br>
-
-            <div class="row-4">
-                <div class="col-6">
-                    <select asp-for="JobType" class="form-select">
-                        <option value="full_time" selected> Full-Time</option>
-                        <option value="part_time" > Part-Time</option>
-                        <option value="contract" > Contractual</option>
-                    </select>
-                    
-                   
-                </div><br>
-                <div clas="row-4" >
-                <div class="col-6">
-                    <input asp-for="JobPrice" type="text" class="form-control col-6" placeholder=" Enter Your Price">
-                </div>
-                </div>
-            </div>
-            <br>
-            <div class="row-4">
-                <div class="col-6">
-                    <input asp-for="Expiredate" type="datetime-local" class="form-control" placeholder="Project-Deadline">
-                </div>
-            </div>
-            <br>
-            <br>
-            
-            
-            <div class="d-grid gap-4">
-                <button class="btn btn-outline-dark" type="submit" asp-action="PostJob"> Post </button>
-                <a asp-action="Login" asp-controller="Account" class="btn btn-outline-danger">Login</a>
+        <div class="card col-sm-10 p-2">
+            <div class="card-header  col-sm fw-lighter border border-3">
+                <span class="fw-bold"> Post Job</span>
             </div>
 
-        </form>
+            <div class="card-body ">
+                <form asp-action="PostJob" asp-controller="Job" method="post">
+
+                    <div class="form-group">
+                        <label hidden for="JobId">Job Id</label>
+                        <input hidden type="text" class="form-control" id="JobId" asp-for="JobId" >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="JobTitle">Job Title</label>
+                        <input type="Text" class="form-control" id="JobTitle" asp-for="JobTitle" >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="JobDesc">Job Description</label>
+                        <textarea class="form-control" id="JobDesc" asp-for="JobDescription" rows="4"></textarea>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="JobPrice">Job Price</label>
+                        <input type="Number" class="form-control" id="JobPrice" asp-for="JobPrice" >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="JobType">Job Type</label>
+                        <select class="form-control" asp-for="JobType" id="JobType">
+                            <option value="full_time" selected> Full-Time</option>
+                            <option value="part_time"> Part-Time</option>
+                            <option value="contract"> Contractual</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ExDate">Project Deadline</label>
+                        <input type="date" id="ExDate" asp-for="Expiredate" >
+                    </div>
+
+                    <div class="d-grid gap-4">
+                        <button class="btn btn-outline-success" type="submit" asp-action="PostJob"> Post </button>
+                        <a asp-action="PostedJobs" asp-controller= "Job" class="btn btn-outline-danger">Back</a>
+                    </div>
+
+
+                </form>
+
+
+
+
+            </div>
+        </div>
     </div>
 </div>

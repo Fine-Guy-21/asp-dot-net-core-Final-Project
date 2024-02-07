@@ -21,13 +21,6 @@
     {
         //List<string> names = new List<string>();
         string names = "";
-        foreach (var user in userManager.Users)
-        {
-            if (user != null && await userManager.IsInRoleAsync(user, role.Name))
-            {
-                names = names + user.UserName + ",";
-            }
-        }
         <tr>
             <td>@role.Id</td>
             <td>@role.Name</td>

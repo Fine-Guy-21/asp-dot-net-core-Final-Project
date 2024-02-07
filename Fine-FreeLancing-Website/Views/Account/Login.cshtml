@@ -5,6 +5,7 @@
 
 @{
     ViewData["Title"] = "Login";
+    Layout = "_Layout4";
 }
 
 @* <h1 class="bg-info text-white">Login</h1>
@@ -26,15 +27,17 @@
 </form> *@
 
 
-<div class="container border border-success rounded-4 shadow-lg pb-5 col-lg-6 col-md-8 col-sm-10"
+<div class="container border border-success rounded-4 my-5 shadow-lg pb-5 col-lg-6 col-md-8 col-sm-10"
 style="background-image:url(https://images.unsplash.com/photo-1617957743097-0d20aa2ea762?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);background-size:cover;">  
     <div class="row justify-content-center align-item-center">
         <div class="col-lg-7 col-md-9 col-sm-12 ">
-            <form>
+            <form asp-action="Login" asp-controller="Account" method="post">
                 <br>
                 <br>
                 <div class="form-group form-floating input-group-sm">
                     <input class="form-control" asp-for="Email" id="floatingInput" placeholder="Email" />
+                    <input hidden class="form-control" asp-for="Returnurl" id="floatingInput" value="@Model.Returnurl"/>
+
                     <label for="floatingInput">Email</label>
                 </div>
                 <br>

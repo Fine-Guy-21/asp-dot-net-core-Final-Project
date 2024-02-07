@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\Imgs\\office.png"
     },
     {
+      "Id": "C:\\Users\\21fin\\Desktop\\Workspace\\GH\\asp-dot-net-core-Final-Project\\Fine-FreeLancing-Website\\wwwroot\\Imgs\\user.png",
+      "PackagePath": "staticwebassets\\Imgs\\user.png"
+    },
+    {
       "Id": "C:\\Users\\21fin\\Desktop\\Workspace\\GH\\asp-dot-net-core-Final-Project\\Fine-FreeLancing-Website\\wwwroot\\css\\Footer-Clean.css",
       "PackagePath": "staticwebassets\\css\\Footer-Clean.css"
     },

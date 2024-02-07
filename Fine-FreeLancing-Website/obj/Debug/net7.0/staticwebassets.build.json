@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0+FvPg2t0s4u4dezZ2MJoe5U3UvZjG0LLrHTwuAlF7Y=",
+  "Hash": "o6XXm/jKoUvmbdANonmaaCYrUeNWXOLTRPvHnXLhhZw=",
   "Source": "Fine-FreeLancing-Website",
   "BasePath": "_content/Fine-FreeLancing-Website",
   "Mode": "Default",
@@ -151,6 +151,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Imgs\\office.png"
+    },
+    {
+      "Identity": "C:\\Users\\21fin\\Desktop\\Workspace\\GH\\asp-dot-net-core-Final-Project\\Fine-FreeLancing-Website\\wwwroot\\Imgs\\user.png",
+      "SourceId": "Fine-FreeLancing-Website",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\21fin\\Desktop\\Workspace\\GH\\asp-dot-net-core-Final-Project\\Fine-FreeLancing-Website\\wwwroot\\",
+      "BasePath": "_content/Fine-FreeLancing-Website",
+      "RelativePath": "Imgs/user.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Imgs\\user.png"
     },
     {
       "Identity": "C:\\Users\\21fin\\Desktop\\Workspace\\GH\\asp-dot-net-core-Final-Project\\Fine-FreeLancing-Website\\wwwroot\\js\\bootstrap.min.js",

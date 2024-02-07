@@ -1,0 +1,69 @@
+﻿@using Fine_FreeLancing_Website.Models
+
+@model Job
+
+@{
+    ViewData["Title"] = "Job Detail Page";
+    Layout = "_Layout";
+}
+
+
+<div class="container d-flex justify-content-center align-items-center mx-auto p-2 border border-success rounded-4 shadow-lg overflow-hidden">
+
+    <div class="container d-flex flex-column justify-content-center align-items-st px-auto" style="height:auto;width:80vw;">
+
+        @* Job Id , Title , Desc , Type , Price , Expired Date , Job Status *@
+        
+
+            <div class="card col-sm-10 p-2">
+                <div class="card-header  col-sm fw-bold border border-3">
+                    @Model.JobTitle
+                </div>
+             
+                <div class="card-body ">
+                    <p class="fw-lighter"> <span class="fw-bold"> JobId : </span>  @Model.JobId </p>
+                    <p class="fw-lighter"> <span class=" fw-bold ">Job Description : </span> @Model.JobDescription</p>
+                    <br />
+                    <p class="fw-lighter"> <span class="fw-bold">Price : </span> @Model.JobPrice </p>
+                    <p class="fw-lighter"> <span class="fw-bold">Type : </span> @Model.JobType </p>
+                    <p class="fw-lighter"> <span class="fw-bold">Status : </span> @Model.JobStatus </p>
+                @{
+                    DateTime currentDate = DateTime.Now;
+                    DateTime expireDate = Model.Expiredate;
+                    TimeSpan timeLeft = expireDate - currentDate;
+                    int daysLeft = (int)timeLeft.TotalDays;
+                    int monthsLeft=0;
+
+                    string formattedDate = expireDate.ToString("dd/MM/yyyy");
+                    @while (daysLeft > 30)
+                        {
+                            daysLeft = daysLeft - 30;
+                            monthsLeft += 1;
+                        }
+                    if(daysLeft <= 30)
+                    {
+                        <div>
+                            <p class="fw-lighter"> <span class="fw-bold">Deadline : </span> @daysLeft d left</p>
+                        </div>
+                    }
+                    else
+                    {                         
+                        <div>
+                            <p class="fw-lighter"> <span class="fw-bold">Deadline : </span>@monthsLeft m @daysLeft d left </p>
+                        </div>                        
+                    }
+
+                }
+                    <p class="fw-lighter"> <span class="fw-bold">Deadline : </span> @formattedDate </p>
+                </div>
+
+                <div class="card-footer col-sm-4 rounded-pill d-flex justify-content-around">
+                    <a class="btn btn-outline-success border rounded-pill" asp-area="" 
+                    asp-action="CreateProposal" asp-controller="Proposal" asp-route-id="@Model.JobId"> Apply</a>
+
+                    <a class="btn btn-outline-danger border rounded-pill" asp-area="" asp-action="Index" asp-controller="job"> Back</a>
+                </div>
+            </div>
+    </div>
+</div>
+

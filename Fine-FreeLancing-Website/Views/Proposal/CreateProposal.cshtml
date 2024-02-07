@@ -1,0 +1,56 @@
+﻿@using Fine_FreeLancing_Website.Models
+
+
+@model ProposalVm
+
+@{
+    ViewData["Title"] = "Create Proposal";
+}
+
+<div class="container d-flex justify-content-center align-items-center mx-auto p-2 border border-success rounded-4 shadow-lg overflow-hidden">
+
+    <div class="container d-flex flex-column justify-content-center align-items-st px-auto" style="height:auto;width:80vw;">
+
+
+        <div class="card col-sm-10 p-2">
+            <div class="card-header  col-sm fw-lighter border border-3">
+                <span class="fw-bold"> Submit Your Proposal </span>
+            </div>
+
+            <div class="card-body ">
+                <form asp-action="CreateProposal" asp-controller="Proposal" method="post">
+
+                    <div class="form-group">
+                        <label for="JobId">Job Id</label>
+                        <input type="text" class="form-control" id="JobId" asp-for="@Model.JobId" readonly="readonly" value="@Model.JobId">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Comment">Proposal Message</label>
+                        <textarea class="form-control" id="Comment" asp-for="Comment" rows="4"></textarea>
+                    </div>
+
+@*                     <div class="form-group">
+                        <label asp-for="DocCv" class="col-sm-2 col-form-label mb-2"></label>
+                        <div class="col-sm-10">
+                            <input asp-for="DocCv" class="form-control">
+                            <span asp-validation-for="DocCv" class="text-danger"></span>
+                        </div>
+                    </div>
+ *@
+                    <br>
+                    <div class="d-grid gap-4">
+                        <button class="btn btn-outline-success" type="submit" asp-action="CreateProposal"> Submit </button>
+                        <a asp-action="Index" asp-controller="Job" class="btn btn-outline-danger">Back</a>
+                    </div>
+
+
+                </form>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
