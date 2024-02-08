@@ -19,11 +19,16 @@
             Proposal? proposal = myDbContext.Proposals.Where(j => j.ProposalId == id).FirstOrDefault();
             return proposal;
         }
+        public Proposal GetProposalByJobId(string jid)
+        {
 
-        public Proposal GetProposalByJobId(string id)
+            Proposal? proposal = myDbContext.Proposals.Where(j => j.JobId == jid).FirstOrDefault();
+            return proposal;
+        }
+        public Proposal GetProposalByJobandUserId(string jid,string uid)
         {
             
-            Proposal? proposal = myDbContext.Proposals.Where(j => j.JobId == id).FirstOrDefault();
+            Proposal? proposal = myDbContext.Proposals.Where(j => j.JobId == jid && j.UserId == uid).FirstOrDefault();
             return proposal;
         }
 
@@ -41,6 +46,14 @@
         {
             List<Proposal>? proposals = myDbContext.Proposals.Where(p=>p.UserId == uid).ToList();
             return proposals;
+        }
+
+        public List<Proposal> GetProposalsByJobId(string id)
+        {
+            
+            List<Proposal>? proposals = myDbContext.Proposals.Where(p => p.JobId == id).ToList();
+            return proposals;
+
         }
 
         public Job SaveJob(Job job) 

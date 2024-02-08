@@ -126,16 +126,16 @@ namespace Fine_FreeLancing_Website.Controllers
             List<MyJob> jobs = jobRepository.MyJobs(Id);
             List<MyJobUserVm> myjobs = new List<MyJobUserVm>();
             
-            foreach (MyJob job in jobs)
-            {
-                var proposal = jobRepository.GetProposalByJobId(job.JobId);                
-                MyJobUserVm? jobUserVm = new MyJobUserVm()
+                foreach (MyJob job in jobs)
                 {
-                    job = jobRepository.GetJobById(job.JobId),
-                    user = userManager.FindByIdAsync(proposal.UserId).Result                    
-                };
-                myjobs.Add(jobUserVm);
-            }                
+                    var proposal = jobRepository.GetProposalByJobandUserId(job.JobId,Id);                
+                    MyJobUserVm? jobUserVm = new MyJobUserVm()
+                    {
+                        job = jobRepository.GetJobById(job.JobId),
+                        user = userManager.FindByIdAsync(proposal.UserId).Result                    
+                    };
+                    myjobs.Add(jobUserVm);
+                }                
             return View(myjobs);
         }
 
@@ -143,21 +143,27 @@ namespace Fine_FreeLancing_Website.Controllers
         public IActionResult PostedJobDetail(string id)
         {
             var job = jobRepository.GetJobById(id);
-            var proposal = jobRepository.GetProposalByJobId(id);
-            if (proposal != null)
+            var proposals = jobRepository.GetProposalsByJobId(job.JobId);
+            List<ProposalJobVm> pjvms = new List<ProposalJobVm>();
+            foreach (var proposal in proposals)
             {
-                var user = userManager.FindByIdAsync(proposal.UserId).Result;
-                ProposalJobVm pjvm = new ProposalJobVm()
+                if (proposal != null)
                 {
-                    ProposalId = jobRepository.GetProposalByJobId(job.JobId).ProposalId,
-                    Job = job,
-                    user = user,
-                    Comment = jobRepository.GetProposalByJobId(job.JobId).Comment
-                };
-                return View(pjvm); 
+                    var user = userManager.FindByIdAsync(proposal.UserId).Result;
+                    ProposalJobVm pjvm = new ProposalJobVm()
+                    {
+                        ProposalId = jobRepository.GetProposalByJobId(job.JobId).ProposalId,
+                        Job = job,
+                        user = user,
+                        Comment = jobRepository.GetProposalByJobId(job.JobId).Comment
+                    };
+                    pjvms.Add(pjvm);
+                }
             }
+            ViewData["pjvm"] = pjvms;
+            return View(job);
 
-            return RedirectToAction("PostedJobs", "job");
+/*            return RedirectToAction("PostedJobs", "job");*/
         }
 
 

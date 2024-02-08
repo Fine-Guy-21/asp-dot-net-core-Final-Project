@@ -107,11 +107,11 @@ namespace Fine_FreeLancing_Website.Controllers
         }
 
         [Authorize(Roles = "Employer,Premium_User,Admin")]
-        public IActionResult Hire(string Id)
+        public IActionResult Hire(string jid , string uid)
         {
             
-            var job = jobRepository.GetJobById(Id);
-            var proposal = jobRepository.GetProposalByJobId(job.JobId);
+            var job = jobRepository.GetJobById(jid); 
+            var proposal = jobRepository.GetProposalByJobandUserId(jid,uid);
             if (proposal != null)
             {
                 var user = userManager.FindByIdAsync(proposal.UserId).Result;

@@ -1,31 +1,32 @@
 ﻿@using Fine_FreeLancing_Website.Models
 
-@model ProposalJobVm
+@model Job
 
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Posted Job Detail";
+    List<ProposalJobVm> pjvms = ViewData["pjvm"] as List<ProposalJobVm>;
 }
 
 <div class="container d-flex justify-content-center align-items-center mx-auto p-2 border border-success rounded-4 shadow-lg overflow-hidden">
 
     <div class="container d-flex flex-column justify-content-center align-items-st px-auto" style="height:auto;width:80vw;">
         
-
+            <h1 class="fw-bold"> Job Details </h1>
             <div class="card col-sm-10 p-2">
                 <div class="card-header  col-sm fw-bold border border-3">
-                     @Model.Job.JobTitle
+                     @Model.JobTitle
                 </div>
                 <div class="card-body">
                     <div class="form-group overflow-hidden">
                         <label for="JobDesc">Description</label>
-                        <textarea class="form-control" id="JobDesc" rows="3" readonly>@Model.Job.JobDescription </textarea>
+                        <textarea class="form-control" id="JobDesc" rows="3" readonly>@Model.JobDescription </textarea>
                     </div>
-                    <p class="card-text-muted">   Price  : <span class="text-primary">@Model.Job.JobPrice br </span> </p>
+                    <p class="card-text-muted">   Price  : <span class="text-primary">@Model.JobPrice br </span> </p>
 
                     @{
                         DateTime currentDate = DateTime.Now;
-                        DateTime expireDate = Model.Job.Expiredate;
+                        DateTime expireDate = Model.Expiredate;
                         TimeSpan timeLeft = expireDate - currentDate;
                         int daysLeft = (int)timeLeft.TotalDays;
                         int monthsLeft = 0;
@@ -52,34 +53,44 @@
                         }
                     }
                     <div class="row">
-                        <p class="card-text-muted col-sm-3">Type : <span class="text-primary">@Model.Job.JobType </span> </p>
-                        <p class="card-text-muted col-sm">Status :<span class="text-primary"> @Model.Job.JobStatus </span></p>
+                        <p class="card-text-muted col-sm-3">Type : <span class="text-primary">@Model.JobType </span> </p>
+                        <p class="card-text-muted col-sm">Status :<span class="text-primary"> @Model.JobStatus </span></p>
                     </div>
                     <div class="card-footer col-sm-4 rounded-pill d-flex justify-content-around">
-                        <a class="btn btn-outline-warning border rounded-pill" asp-area="" asp-action="EditJob" asp-controller="Job" asp-route-id="@Model.Job.JobId"> Edit</a>
-                        <a class="btn btn-outline-danger border rounded-pill" asp-area="" asp-action="DeleteJob" asp-controller="Job" asp-route-id="@Model.Job.JobId"> Delete</a>
+                        <a class="btn btn-outline-warning border rounded-pill" asp-area="" asp-action="EditJob" asp-controller="Job" asp-route-id="@Model.JobId"> Edit Job</a>
+                        <a class="btn btn-outline-danger border rounded-pill" asp-area="" asp-action="DeleteJob" asp-controller="Job" asp-route-id="@Model.JobId"> Delete Job</a>
                     </div>
 
 
                 </div>
             </div>
             <br>
+        <div class="d-flex justify-content-center align-items-center flex-column">
+            <h2 class="fw-bold "> Proposals </h2>
 
-             <div class="card col-sm-10 p-2">
-                  <div class="card-header col-sm fw-bold border border-3">
-                      @Model.user.Id
-                  </div>
-                  <div class="card-body ">
-                <p class="fw-bold"> Full Name :  <span class="text-dark-muted text-primary fw-normal">@Model.user.FullName</span></p>
-                  </div>
-            <div class="card-footer col-sm-5 border rounded-pill d-flex justify-content-around">
-                <a class="btn btn-outline-success border rounded-pill" asp-area="" asp-action="Hire" asp-controller="Proposal" asp-route-id="@Model.Job.JobId"> Hire For Work  </a>
-                <a class="btn btn-outline-danger border rounded-pill" asp-area="" asp-action="DeleteProposal" asp-controller="Proposal" asp-route-id="@Model.ProposalId">Decline Proposal</a>
+            @foreach( var pjvm in pjvms)
+            {
+                 <div class="card col-sm-8 p-2 ">
+                      <div class="card-header col-sm fw-bold border border-3">
+                          @pjvm.user.Id
+                      </div>
+                      <div class="card-body ">
+                        <p class="fw-bold"> Full Name :  <span class="text-dark-muted text-primary fw-normal">@pjvm.user.FullName (@pjvm.user.UserName)</span></p>
+                        <p class="fw-bold"> Email :  <span class="text-dark-muted text-primary fw-normal">@pjvm.user.Email</span></p>
+                        <p class="fw-bold"> Gender :  <span class="text-dark-muted text-primary fw-normal">@pjvm.user.Gender</span></p>
 
-
-            </div>
-             </div>
-
-
+                        <div class="form-group overflow-hidden">
+                            <label for="com">Comment</label>
+                            <textarea class="form-control" id="com" rows="3" readonly>@pjvm.Comment </textarea>
+                        </div>
+                      </div>
+                    <div class="card-footer col-sm-5 border rounded-pill d-flex justify-content-around">
+                        <a class="btn btn-outline-success border rounded-pill" asp-area="" asp-action="Hire" asp-controller="Proposal" asp-route-jid="@pjvm.Job.JobId" asp-route-uid="@pjvm.user.Id"> Hire </a>
+                        <a class="btn btn-outline-danger border rounded-pill" asp-area="" asp-action="DeleteProposal" asp-controller="Proposal" asp-route-id="@pjvm.ProposalId">Decline </a>
+                    </div>
+                 </div>
+                <br/>
+             }
+        </div>
     </div>
 </div>
