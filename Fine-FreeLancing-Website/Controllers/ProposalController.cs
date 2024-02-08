@@ -16,6 +16,28 @@ namespace Fine_FreeLancing_Website.Controllers
             this.jobRepository = jobRepository;
             this.userManager = userManager;
         }
+        
+        [Authorize(Roles = "Freelancer,Premium_User,Admin")]
+        public IActionResult MyProposals()
+        {
+            var user = userManager.FindByNameAsync(User.Identity.Name).Result;
+            List<Proposal> proposals = jobRepository.GetMyProposals(user.Id);
+
+            List<ProposalJobVm> pjvmlist = new List<ProposalJobVm>();
+            
+            foreach (var proposal in proposals)
+            {
+                ProposalJobVm pjvm= new ProposalJobVm()
+                {
+                  ProposalId = proposal.ProposalId,
+                  Job = jobRepository.GetJobById(proposal.JobId),
+                  user = user,
+                  Comment = proposal.Comment
+                };
+                pjvmlist.Add(pjvm);
+            } 
+            return View(pjvmlist);
+        }
 
         [Authorize(Roles= "Freelancer,Premium_User,Admin")]
         [HttpGet]
@@ -40,28 +62,76 @@ namespace Fine_FreeLancing_Website.Controllers
                     UserId = CurrUserId,
                     Comment = pvm.Comment,
                 };
-            return RedirectToAction("","Job");
+            jobRepository.SaveProposal(newproposal);
+            return RedirectToAction("MyProposals");
         }
 
         [Authorize(Roles= "Freelancer,Premium_User,Admin")]
         [HttpGet]
-        public IActionResult UpdateProposal() => View();
+        public IActionResult UpdateProposal(string Id)
+        {
+            var proposal = jobRepository.GetProposalById(Id);            
+            var proposalvm = new ProposalVm()
+            {
+                JobId = proposal.JobId,
+                Comment = proposal.Comment,
+            };
+            
+            return View(proposalvm);
+        }
 
         [Authorize(Roles = "Freelancer,Premium_User,Admin")]
         [HttpPost]
         public IActionResult UpdateProposal(ProposalVm pvm)
         {
-            return View();
+            var proposal = jobRepository.GetProposalByJobId(pvm.JobId);
+            
+            if (ModelState.IsValid)
+            {
+                proposal.Comment = pvm.Comment;
+                jobRepository.UpdateProposal(proposal);
+                RedirectToAction("MyProposals");
+            }
+            
+            return RedirectToAction("MyProposals");
         }
         
-        [Authorize(Roles= "Freelancer,Premium_User,Admin")]
+        [Authorize(Roles= "Freelancer,Employer,Premium_User,Admin")]
         [HttpGet]
-        public IActionResult DeleteProposal()
+        public IActionResult DeleteProposal(string id)
         {
-            return View();
+            var proposal = jobRepository.GetProposalById(id);
+            jobRepository.DeleteProposal(proposal);
+
+            return RedirectToAction("MyProposals");
         }
+
+        [Authorize(Roles = "Employer,Premium_User,Admin")]
+        public IActionResult Hire(string Id)
+        {
+            
+            var job = jobRepository.GetJobById(Id);
+            var proposal = jobRepository.GetProposalByJobId(job.JobId);
+            if (proposal != null)
+            {
+                var user = userManager.FindByIdAsync(proposal.UserId).Result;
+                
+                MyJob myJob = new MyJob()
+                {
+                    MyJobId = GetRandomID(),
+                    JobId = job.JobId,
+                    UserId = proposal.UserId     
+                };
+                jobRepository.SaveMyjob(myJob);
+
+                return RedirectToAction("PostedJobs","Job");
+            }
+            return RedirectToAction("PostedJobs","Job");
+        }
+
+
         
-        public string GetRandomID()
+            public string GetRandomID()
         {
             string id = Guid.NewGuid().ToString("N");
             return id;

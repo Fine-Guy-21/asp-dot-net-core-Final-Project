@@ -12,28 +12,28 @@ namespace Fine_FreeLancing_Website.Controllers
     {
         private readonly IJobRepository jobRepository;
         private readonly UserManager<User> userManager;
-        public JobController(IJobRepository _jobRepository,UserManager<User> _userManager )
+        public JobController(IJobRepository _jobRepository, UserManager<User> _userManager)
         {
             jobRepository = _jobRepository;
             userManager = _userManager;
         }
 
-        [AllowAnonymous]
-        public IActionResult Index()=> View(jobRepository.GetallJobs());
+        [Authorize(Roles = "Freelancer,Premium_User,Admin")]
+        public IActionResult Index() => View(jobRepository.GetallJobs());
 
         [Authorize]
-        [Authorize(Roles = "Employer,Premium_User")]  
+        [Authorize(Roles = "Employer,Premium_User,Admin")]
         [HttpGet]
-        public IActionResult PostJob()=> View();
+        public IActionResult PostJob() => View();
         [Authorize]
-        [Authorize(Roles= "Employer,Premium_User")]        
+        [Authorize(Roles = "Employer,Premium_User,Admin")]
         [HttpPost]
         public IActionResult PostJob(JobVM jobvm)
-        { 
-            jobvm.JobId = Guid.NewGuid().ToString(); 
-            if(ModelState.IsValid)
+        {
+            jobvm.JobId = Guid.NewGuid().ToString();
+            if (ModelState.IsValid)
             {
-                var curruser = userManager.FindByNameAsync(User.Identity.Name).Result;                
+                var curruser = userManager.FindByNameAsync(User.Identity.Name).Result;
                 Job newjob = new Job
                 {
                     JobId = jobvm.JobId,
@@ -48,7 +48,7 @@ namespace Fine_FreeLancing_Website.Controllers
                 };
                 jobRepository.SaveJob(newjob);
 
-                return RedirectToAction("Index" ,"Home");
+                return RedirectToAction("Index", "Home");
             }
             return View();
         }
@@ -58,31 +58,31 @@ namespace Fine_FreeLancing_Website.Controllers
         public IActionResult EditJob(String Id)
         {
             Job job = jobRepository.GetJobById(Id);
-            JobVM jobvm= new JobVM();
-            
-            if (job != null) 
+            JobVM jobvm = new JobVM();
+
+            if (job != null)
             {
                 jobvm.JobId = job.JobId;
                 jobvm.JobTitle = job.JobTitle;
                 jobvm.JobDescription = job.JobDescription;
-                jobvm.JobType = job.JobType;    
+                jobvm.JobType = job.JobType;
                 jobvm.JobPrice = job.JobPrice;
                 jobvm.Expiredate = job.Expiredate;
                 jobvm.JobStatus = job.JobStatus;
-            } 
-             
+            }
+
             return View(jobvm);
         }
 
 
         [Authorize(Roles = "Employer,Premium_User,Admin")]
-        [HttpPost] 
+        [HttpPost]
         public IActionResult EditJob(JobVM jobvm)
         {
             if (jobvm != null)
             {
                 Job job = jobRepository.GetJobById(jobvm.JobId);
-                
+
                 job.JobTitle = jobvm.JobTitle;
                 job.JobDescription = jobvm.JobDescription;
                 job.JobType = jobvm.JobType;
@@ -92,7 +92,7 @@ namespace Fine_FreeLancing_Website.Controllers
 
                 jobRepository.UpdateJob(job);
             }
-            return RedirectToAction("PostedJobs","Job");
+            return RedirectToAction("PostedJobs", "Job");
         }
 
         [Authorize(Roles = "Employer,Premium_User,Admin")]
@@ -102,9 +102,9 @@ namespace Fine_FreeLancing_Website.Controllers
             Job job = jobRepository.GetJobById(Id);
             if (job != null)
             {
-                jobRepository.DeleteJob(job);   
+                jobRepository.DeleteJob(job);
             }
-            return RedirectToAction("Index","Job");
+            return RedirectToAction("Index", "Job");
         }
 
         [AllowAnonymous]
@@ -118,17 +118,57 @@ namespace Fine_FreeLancing_Website.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+
         [Authorize(Roles = "Freelancer,Premium_User,Admin")]
         public IActionResult MyJobs()
         {
+            string Id = userManager.FindByNameAsync(User.Identity.Name).Result.Id;
+            List<MyJob> jobs = jobRepository.MyJobs(Id);
+            List<MyJobUserVm> myjobs = new List<MyJobUserVm>();
             
-            return View();
+            foreach (MyJob job in jobs)
+            {
+                var proposal = jobRepository.GetProposalByJobId(job.JobId);                
+                MyJobUserVm? jobUserVm = new MyJobUserVm()
+                {
+                    job = jobRepository.GetJobById(job.JobId),
+                    user = userManager.FindByIdAsync(proposal.UserId).Result                    
+                };
+                myjobs.Add(jobUserVm);
+            }                
+            return View(myjobs);
         }
+
+        [Authorize(Roles = "Employer,Premium_User,Admin")]
+        public IActionResult PostedJobDetail(string id)
+        {
+            var job = jobRepository.GetJobById(id);
+            var proposal = jobRepository.GetProposalByJobId(id);
+            if (proposal != null)
+            {
+                var user = userManager.FindByIdAsync(proposal.UserId).Result;
+                ProposalJobVm pjvm = new ProposalJobVm()
+                {
+                    ProposalId = jobRepository.GetProposalByJobId(job.JobId).ProposalId,
+                    Job = job,
+                    user = user,
+                    Comment = jobRepository.GetProposalByJobId(job.JobId).Comment
+                };
+                return View(pjvm); 
+            }
+
+            return RedirectToAction("PostedJobs", "job");
+        }
+
+
+
         [Authorize(Roles = "Employer,Premium_User,Admin")]
         public IActionResult PostedJobs()
         {
+            var userid = userManager.FindByNameAsync(User.Identity.Name).Result.Id;
+            List<Job> jobs = jobRepository.GetMyPostedJobs(userid);
 
-            return View(jobRepository.GetallJobs());
+            return View(jobs);
         }
 
         public string GetRandomID()

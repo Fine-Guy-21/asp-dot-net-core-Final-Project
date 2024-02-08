@@ -2,7 +2,125 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-6">
+            <h1 class="display-4">Welcome to Fine-Freelancer Website</h1>
+            <p class="lead">Find the perfect freelancer for your project.</p>
+            <p>
+                Our platform connects businesses with talented freelancers from around the world. Whether you need
+                web development, graphic design, writing, or any other skill, we've got you covered.
+            </p>
+            <a class="btn btn-primary btn-lg" asp-controller="Job" asp-action="Index">Get Started</a>
+        </div>
+        <div class="col-lg-6">
+            <img src="~/Imgs/freelancer.png" class="img-fluid border border-5" alt="Freelancer">
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <h1 class="display-4">Our Services</h1>
+    <p class="lead">We offer a wide range of services to meet your project needs.</p>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <img src="~/Imgs/webdev.jpeg" class="card-img-top" style="height:250px;" alt="Web Development">
+                <div class="card-body">
+                    <h2 class="card-title">Web Development</h2>
+                    <p class="card-text">
+                        Our team of experts can create responsive and scalable websites and web
+                        applications.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <img src="~/Imgs/graphics.jpg" class="card-img-top" style="height:250px;" alt="Graphic Design">
+                <div class="card-body">
+                    <h2 class="card-title">Graphic Design</h2>
+                    <p class="card-text">
+                        Our talented graphic designers can create eye-catching visuals for your
+                        brand.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <img src="~/Imgs/content.jpg" class="card-img-top " style="height:250px;" alt="Content Writing">
+                <div class="card-body">
+                    <h2 class="card-title">Content Writing</h2>
+                    <p class="card-text">
+                        Our skilled writers can deliver engaging and SEO-friendly content for your
+                        website or blog.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <img src="/Imgs/Seo.jpg" class="card-img-top" style="height:250px;" alt="SEO">
+                <div class="card-body">
+                    <h2 class="card-title">Search Engine Optimization (SEO)</h2>
+                    <p class="card-text">Improve your website's visibility and rankings with our SEO services.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <h2 class="text-center mb-4">Client Testimonials</h2>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <blockquote class="blockquote">
+                        <p class="mb-0">
+                            "Working with the freelancers from this platform was a breeze. They delivered
+                            high-quality work and exceeded our expectations."
+                        </p>
+                        <br />
+                        <footer class="blockquote-footer">John Doe <cite title="Client">- Client</cite></footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <blockquote class="blockquote">
+                        <p class="mb-0">
+                            "The graphic design services provided by this platform helped elevate our
+                            brand image. Highly recommended!"
+                        </p>
+                        <br />
+                        <footer class="blockquote-footer">Jane Smith <cite title="Client">- Client</cite></footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <blockquote class="blockquote">
+                        <p class="mb-0">
+                            "The web development team here is top-notch. They built a modern and
+                            user-friendly website for our business."
+                        </p>
+                        <br />
+                        <footer class="blockquote-footer">Mark Johnson <cite title="Client">- Client</cite></footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

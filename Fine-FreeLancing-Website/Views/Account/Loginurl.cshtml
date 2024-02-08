@@ -31,7 +31,7 @@
 style="background-image:url(https://images.unsplash.com/photo-1617957743097-0d20aa2ea762?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);background-size:cover;">  
     <div class="row justify-content-center align-item-center">
         <div class="col-lg-7 col-md-9 col-sm-12 ">
-            <form asp-action="Login" asp-controller="Account" method="post">
+            <form asp-action="Loginurl" asp-controller="Account" method="post">
                 <br>
                 @if (!ViewData.ModelState.IsValid)
                 {
@@ -74,7 +74,7 @@ style="background-image:url(https://images.unsplash.com/photo-1617957743097-0d20
                 <br>
 
                 <div class="d-grid gap-4">
-                    <button class="btn btn-outline-primary" type="submit" asp-action="Login"> Sign In</button>
+                    <button class="btn btn-outline-primary" type="submit" asp-action="Loginurl"> Sign In</button>
                     <a asp-action="Index" asp-controller="Home" class="btn btn-outline-danger">Cancel</a>
                 </div>
                 

@@ -5,12 +5,36 @@
       "PackagePath": "staticwebassets\\Fine-FreeLancing-Website.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\21fin\\Desktop\\Workspace\\GH\\asp-dot-net-core-Final-Project\\Fine-FreeLancing-Website\\wwwroot\\Imgs\\Seo.jpg",
+      "PackagePath": "staticwebassets\\Imgs\\Seo.jpg"
+    },
+    {
+      "Id": "C:\\Users\\21fin\\Desktop\\Workspace\\GH\\asp-dot-net-core-Final-Project\\Fine-FreeLancing-Website\\wwwroot\\Imgs\\content.jpg",
+      "PackagePath": "staticwebassets\\Imgs\\content.jpg"
+    },
+    {
+      "Id": "C:\\Users\\21fin\\Desktop\\Workspace\\GH\\asp-dot-net-core-Final-Project\\Fine-FreeLancing-Website\\wwwroot\\Imgs\\freelancer.png",
+      "PackagePath": "staticwebassets\\Imgs\\freelancer.png"
+    },
+    {
+      "Id": "C:\\Users\\21fin\\Desktop\\Workspace\\GH\\asp-dot-net-core-Final-Project\\Fine-FreeLancing-Website\\wwwroot\\Imgs\\graphics.jpg",
+      "PackagePath": "staticwebassets\\Imgs\\graphics.jpg"
+    },
+    {
       "Id": "C:\\Users\\21fin\\Desktop\\Workspace\\GH\\asp-dot-net-core-Final-Project\\Fine-FreeLancing-Website\\wwwroot\\Imgs\\office.png",
       "PackagePath": "staticwebassets\\Imgs\\office.png"
     },
     {
+      "Id": "C:\\Users\\21fin\\Desktop\\Workspace\\GH\\asp-dot-net-core-Final-Project\\Fine-FreeLancing-Website\\wwwroot\\Imgs\\unauthorized.jpg",
+      "PackagePath": "staticwebassets\\Imgs\\unauthorized.jpg"
+    },
+    {
       "Id": "C:\\Users\\21fin\\Desktop\\Workspace\\GH\\asp-dot-net-core-Final-Project\\Fine-FreeLancing-Website\\wwwroot\\Imgs\\user.png",
       "PackagePath": "staticwebassets\\Imgs\\user.png"
+    },
+    {
+      "Id": "C:\\Users\\21fin\\Desktop\\Workspace\\GH\\asp-dot-net-core-Final-Project\\Fine-FreeLancing-Website\\wwwroot\\Imgs\\webdev.jpeg",
+      "PackagePath": "staticwebassets\\Imgs\\webdev.jpeg"
     },
     {
       "Id": "C:\\Users\\21fin\\Desktop\\Workspace\\GH\\asp-dot-net-core-Final-Project\\Fine-FreeLancing-Website\\wwwroot\\css\\Footer-Clean.css",
@@ -283,6 +307,10 @@
     {
       "Id": "C:\\Users\\21fin\\Desktop\\Workspace\\GH\\asp-dot-net-core-Final-Project\\Fine-FreeLancing-Website\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\21fin\\Desktop\\Workspace\\GH\\asp-dot-net-core-Final-Project\\Fine-FreeLancing-Website\\wwwroot\\unauthorized.html",
+      "PackagePath": "staticwebassets\\unauthorized.html"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.Fine-FreeLancing-Website.Microsoft.AspNetCore.StaticWebAssets.props",

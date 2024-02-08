@@ -8,16 +8,39 @@
             this.myDbContext = myDbContext;
         }
 
-        public Job GetJobById (string id)
+        public Job GetJobById(string id)
         {
             Job? job = myDbContext.Jobs.Where(j => j.JobId == id).FirstOrDefault();  
             return job;
         }
 
-        public List<Job> GetMyJobById(string jid, string uid)
+        public Proposal GetProposalById(string id)
         {
-            List<Job>? jobs = myDbContext.Jobs.Where(j => j.JobId == jid && j.UserId == uid).ToList();
+            Proposal? proposal = myDbContext.Proposals.Where(j => j.ProposalId == id).FirstOrDefault();
+            return proposal;
+        }
+
+        public Proposal GetProposalByJobId(string id)
+        {
+            
+            Proposal? proposal = myDbContext.Proposals.Where(j => j.JobId == id).FirstOrDefault();
+            return proposal;
+        }
+
+        public Job GetMyJobById(string jid,string uid )
+        {
+            Job? job = myDbContext.Jobs.Where(j =>j.JobId==jid && j.UserId == uid).FirstOrDefault();
+            return job;
+        }
+        public List<Job> GetMyPostedJobs(string uid)
+        {
+            List<Job>? jobs = myDbContext.Jobs.Where(j => j.UserId == uid).ToList();
             return jobs;
+        }
+        public List<Proposal> GetMyProposals(string uid)
+        {
+            List<Proposal>? proposals = myDbContext.Proposals.Where(p=>p.UserId == uid).ToList();
+            return proposals;
         }
 
         public Job SaveJob(Job job) 
@@ -33,7 +56,12 @@
             myDbContext.SaveChanges();
             return proposal;
         }
-        
+        public MyJob SaveMyjob(MyJob myjob)
+        {
+            myDbContext.MyJobs.Add(myjob);
+            myDbContext.SaveChanges();
+            return myjob;
+        }
 
         public Job UpdateJob(Job job)
         {
@@ -54,6 +82,7 @@
             myDbContext.Jobs.Remove(job);
             myDbContext.SaveChanges();
         }
+        
         public void DeleteProposal(Proposal proposal)
         {
             
@@ -66,17 +95,17 @@
 
             return myDbContext.Jobs.ToList();
         }
-
-        public List<Job> MyJobs(string JobID, string UserId)
+        public void DeleteMyJob(MyJob myjob)
         {
-            
-            return myDbContext.Jobs.ToList();
+            myDbContext.MyJobs.Remove(myjob);
+            myDbContext.SaveChanges();
+        }
+        public List<MyJob> MyJobs(string UserId)
+        {            
+            return myDbContext.MyJobs.Where(u=>u.UserId==UserId).ToList();
         }
 
-        public List<Job> MyPostedJobs(string JobID, string UserId)
-        {
-            return myDbContext.Jobs.ToList();
-        }
+        
 
     }
 }

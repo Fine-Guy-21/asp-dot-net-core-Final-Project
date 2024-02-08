@@ -1,0 +1,45 @@
+﻿@using Fine_FreeLancing_Website.Models
+
+@model List<ProposalJobVm>
+
+@{
+
+    Layout = "_Layout";
+    ViewData["Title"] = "Find Jobs";
+}
+
+<div class="container d-flex justify-content-center align-items-center mx-auto p-2 border border-success rounded-4 shadow-lg overflow-hidden">
+
+    <div class="container d-flex flex-column justify-content-center align-items-st px-auto" style="height:auto;width:80vw;">
+        @foreach (var pjvm in @Model)
+        {
+
+            <div class="card col-sm-10 p-2">
+                <div class="card-header  col-sm fw-bold border border-3">
+                    Applied for : @pjvm.Job.JobTitle
+                </div>
+                
+                <div class="card-body">
+
+                    <div class="form-group">
+                        <label for="ProId">Proposal Id</label>
+                        <input type="Text" class="form-control" id="ProId" value="@pjvm.ProposalId" readonly="readonly">
+                    </div>                    
+                    <div class="form-group overflow-hidden">
+                        
+                        <label for="ProposalMes">Proposal Message</label>
+                        <textarea class="form-control" id="ProposalMes" rows="3" readonly>@pjvm.Comment</textarea>
+                    </div>
+
+                    <br>
+
+                    <div class="card-footer col-sm-8 rounded-pill d-flex justify-content-around">
+                        <a class="btn btn-outline-warning border rounded-pill" asp-area="" asp-action="UpdateProposal" asp-controller="Proposal" asp-route-id="@pjvm.ProposalId"> Edit Proposal</a>
+                        <a class="btn btn-outline-danger border rounded-pill" asp-area="" asp-action="DeleteProposal" asp-controller="Proposal" asp-route-id="@pjvm.ProposalId"> Delete Proposal</a>
+                    </div>
+                </div>
+            </div>
+            <br>
+        }
+    </div>
+</div>

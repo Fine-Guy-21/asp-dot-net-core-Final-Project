@@ -1,4 +1,5 @@
 ﻿using Fine_FreeLancing_Website.Models;
+using System.Globalization;
 
 namespace Fine_FreeLancing_Website.MyMiddleware
 {
@@ -16,22 +17,10 @@ namespace Fine_FreeLancing_Website.MyMiddleware
             {
                 string returnUrlValue = returnUrl.FirstOrDefault();
 
+                string url = "~/Imgs/unauthorized.jpg";
                 context.Response.ContentType = "text/html";
 
-                string htmlContent = "<html>" +
-                    "<head> " +
-                    "<style>" +
-                    "h1{ color:white; text-align:center;}" +
-                    "h3{ color:white; text-align:center;}" +
-                    "body{ background-color:grey; }" +
-                    "</style>" +
-                    "</head>" +
-                    "<body>" +
-                    "<h1> Sorry, You're Not allowed to Visit This Page </h1> " +
-                    "<br>" +
-                    " <h3>" + returnUrlValue +"</h3>" +
-                    "</body>" +
-                    "</html>";
+                string htmlContent = await File.ReadAllTextAsync("wwwroot/unauthorized.html");
 
                 await context.Response.WriteAsync(htmlContent);
                 return; 
