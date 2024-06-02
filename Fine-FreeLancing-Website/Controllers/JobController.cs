@@ -21,11 +21,10 @@ namespace Fine_FreeLancing_Website.Controllers
         [Authorize(Roles = "Freelancer,Premium_User,Admin")]
         public IActionResult Index() => View(jobRepository.GetallJobs());
 
-        [Authorize]
         [Authorize(Roles = "Employer,Premium_User,Admin")]
         [HttpGet]
         public IActionResult PostJob() => View();
-        [Authorize]
+        
         [Authorize(Roles = "Employer,Premium_User,Admin")]
         [HttpPost]
         public IActionResult PostJob(JobVM jobvm)

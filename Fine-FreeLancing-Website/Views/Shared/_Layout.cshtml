@@ -58,7 +58,7 @@
                 <div class="d-sm-inline-flex end ">
                 @if (signInManager.IsSignedIn(User))
                 {                    
-                        <button class="btn btn-outline-danger m-sm-1 rounded-pill"><a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout" asp-route-id="">@User.Identity.Name </a></button>                                                
+                        <button ><a class="logout-button" asp-controller="Account" asp-action="Logout" >@User.Identity.Name </a></button>                                                
                 }
                 else
                 {
